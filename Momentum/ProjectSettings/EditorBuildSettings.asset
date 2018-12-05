@@ -8,48 +8,55 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Menu.unity
     guid: b6f12ec9844c1ba4eaff012e077a4330
-  - enabled: 0
+  - enabled: 1
     path: Assets/Tutorial.unity
     guid: b642687417090ae4884210705355d319
-  - enabled: 0
+  - enabled: 1
     path: Assets/Level02.unity
     guid: c8433113848f9cf47bd58b81995bccea
-  - enabled: 0
+  - enabled: 1
     path: Assets/Level03.unity
     guid: 4b5f0d434770c60498468df4fdf0d5e8
-  - enabled: 0
+  - enabled: 1
     path: Assets/Level04.unity
     guid: 6940e0c066cbbfd4f8538414c1eb4c4b
-  - enabled: 0
+  - enabled: 1
     path: Assets/Level05.unity
     guid: 6d271d9ac76c67444a5fe5f346238f6b
-  - enabled: 0
+  - enabled: 1
     path: Assets/Level06.unity
     guid: c48131e1e6148384d866899b985269f4
-  - enabled: 0
+  - enabled: 1
     path: Assets/Level07.unity
     guid: 64bfdc1207a8a69429d054cd5956ffa6
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Level16.unity
+    guid: a8f0532daff21ea4fbd548cd9bebaac6
+  - enabled: 1
     path: Assets/Level08.unity
     guid: 0a31ddfd7b633104499ff5b4e698d045
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Level17.unity
+    guid: 4b66e5f2fca4e504887a39b29e5d5c6d
+  - enabled: 1
     path: Assets/Level09.unity
     guid: 7049e7945d5ff5a4b87e93d5436e29bd
-  - enabled: 0
+  - enabled: 1
     path: Assets/Level10.unity
     guid: 7b51c8edce4112842a4922ab876373f9
-  - enabled: 0
+  - enabled: 1
     path: Assets/Level11.unity
     guid: 0bf89aaedd06c1b468bfec5e602ca5df
-  - enabled: 0
+  - enabled: 1
     path: Assets/Level12.unity
     guid: 03917eb3a608fa941b99e3761a1adfc6
   - enabled: 1
-    path: Assets/Level14.unity
-    guid: ccc037777db4cf54f975d18bc2f9ff76
+    path: Assets/Level18.unity
+    guid: 0d06730e873f6194c91b546a17cc47e7
   - enabled: 1
     path: Assets/Credits.unity
     guid: 6277f59af5c8b7e478fcc65a0e90a4a5
-  - enabled: 0
+  - enabled: 1
     path: Assets/LevelSelect.unity
     guid: 6f82ae946f092fd4ca9c261fa786d939
+  m_configObjects: {}
