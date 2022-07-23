@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour {
 	public float forwardForce = 2000f;
 	public float sidewaysForce = 500f;
 
+	public Material DissolveMaterial;
+	private float dissolveAmount = 0.0f;
 	// Update is called once per frame, FixedUpdate is better for Physics based things
 	void FixedUpdate () {
 		rb.AddForce (0, 0, forwardForce * Time.deltaTime); // Add a forward force
@@ -29,8 +31,18 @@ public class PlayerMovement : MonoBehaviour {
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-		if (rb.position.y < -2f) {
-			FindObjectOfType<GameManager> ().EndGame ();
+		if (rb.position.y < -2f) 
+		{
+			DissolveMaterial.SetFloat("_Amount", dissolveAmount);//SetsFloat for Amount to Dissolve
+        	dissolveAmount += Time.deltaTime;// * speed;//How fast it dissolves
+
+			sidewaysForce = 0f;
+		 		if(dissolveAmount >= 1.0f)
+            	{
+					
+                    FindObjectOfType<GameManager>().EndGame();
+            	}
+			//FindObjectOfType<GameManager> ().EndGame ();
 		}
 }
 }

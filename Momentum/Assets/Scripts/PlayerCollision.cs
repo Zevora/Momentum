@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+
 public class PlayerCollision : MonoBehaviour {
 
 	public PlayerMovement movement;     //movement for the player
@@ -10,28 +11,80 @@ public class PlayerCollision : MonoBehaviour {
     //Shader DissolveSurface;
     Renderer rend;                      //Sets the renderer on the Player object to rend
 
-    
+    public Material DissolveMaterial;
 
+    public float speed;
+    private float dissolveAmount;
+
+    
+    private int count = 0;
     //public float dist = 0.0f;
     //public float ix = 0.0f;
     void start()
     {
         
         points = 0;     //Keeps track of my point system
+        
+        SetPointsText ();                                   //calls the SetPointsText Function below
+
         rend = GetComponent<Renderer>(); //set a variable to the shader
 
         //DissolveSurface = Shader.Find("_DissolveSurface");
         rend.material.shader = Shader.Find("_DissolveSurface"); //finds the shader
-        SetPointsText ();                                   //calls the SetPointsText Function below
+         DissolveMaterial.SetFloat("_Amount", 0.0f);
+         Debug.Log("The Material has been Reset");
+         //QualitySettings.shadows = ShadowQuality.All;
+         Debug.Log("The Shadows has been Reset");
+    }
+
+    private void FixedUpdate()
+    {
+        if(count == 0)
+        {
+        DissolveMaterial.SetFloat("_Amount", 0.0f);
+        }
         
+        if(count == 1)
+        {     
+        DissolveMaterial.SetFloat("_Amount", dissolveAmount);//SetsFloat for Amount to Dissolve
+        dissolveAmount += Time.deltaTime;// * speed;//How fast it dissolves
+        Debug.Log(DissolveMaterial.GetFloat("_Amount"));
+
+            if(dissolveAmount >= 1.0f)
+            {
+                    movement.enabled = false;
+                    //QualitySettings.shadows = ShadowQuality.HardOnly;
+                    Debug.Log("reset dissolve Amount");
+                    FindObjectOfType<GameManager>().EndGame();
+                     //DissolveMaterial.SetFloat("_Amount", 0.0f);  
+            }
+        }
     }
 
 	void OnCollisionEnter (Collision collisionInfo)
 	{
 		if (collisionInfo.collider.tag == "Obstacle")
 		{
-            float _Amount = Mathf.PingPong(Time.deltaTime, 0.0f);   //want _Amount to gradually increase from 0 -> 1 as time goes on
-            rend.material.SetFloat("_Amount", _Amount);             //NullReferenceException: Object Reference not set to an instance of an object              ***************
+            Debug.Log("Setting the Dissolve...");
+            Debug.Log(DissolveMaterial.GetFloat("_Amount"));
+
+            count = 1;
+            /* for(int i =0; i <= 10; i++)
+            {
+                DissolveMaterial.SetFloat("_Amount", dissolveAmount);//SetsFloat for Amount to Dissolve
+                dissolveAmount += Time.deltaTime * i;//How fast it dissolves
+                Debug.Log(DissolveMaterial.GetFloat("_Amount"));
+            }
+            */
+           FixedUpdate();
+
+            Debug.Log("Final Amount");
+            Debug.Log(DissolveMaterial.GetFloat("_Amount"));
+            Debug.Log("Should have called Dissolve shader");
+
+
+
+
             movement.enabled = false;                               //Disables the players movement because they have died
 
            Debug.Log("Dissolve my dude!");                          //Let's me know if it got here
@@ -46,8 +99,8 @@ public class PlayerCollision : MonoBehaviour {
 
 
 
-
-            FindObjectOfType<GameManager>().EndGame();
+            //DissolveMaterial.SetFloat("_Amount", 0);//SetsFloat for Amount to Dissolve to default
+            //FindObjectOfType<GameManager>().EndGame();
 
 
         }

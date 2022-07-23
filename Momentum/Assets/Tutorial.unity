@@ -1022,6 +1022,11 @@ Prefab:
       propertyPath: completeLevelUI
       value: 
       objectReference: {fileID: 1453516938}
+    - target: {fileID: 114890233907628884, guid: 122065ba8dccea24381bb65bdf250e96,
+        type: 2}
+      propertyPath: restartDelay
+      value: 0.35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 122065ba8dccea24381bb65bdf250e96, type: 2}
   m_IsPrefabAsset: 0

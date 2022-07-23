@@ -7,7 +7,7 @@
 
 		//Dissolve properties
 		_DissolveTexture("Dissolve Texture", 2D) = "white" {}
-	_Amount("Amount", Range(0,1)) = 0
+		_Amount("Amount", Range(0.0,1.0)) = 0.0
 	}
 
 		SubShader{
